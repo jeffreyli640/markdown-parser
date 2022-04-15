@@ -22,7 +22,9 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             if(openParen >= 0 && closeParen > openParen) {
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
+                String link = markdown.substring(openParen + 1, closeParen);
+                link = link.replaceAll("\\s", "");
+                toReturn.add(link);
             } else {
                 break;
             }
