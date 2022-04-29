@@ -13,13 +13,22 @@ public class MarkdownParse {
         int currentIndex = 0;
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
+            if(openBracket > 0){
+                if(markdown.charAt(openBracket - 1) == '!') {
+                    openBracket = markdown.indexOf("[",openBracket + 1);
+                    if(openBracket == -1) {
+                        break;
+                    }
+                }
+            }
             int closeBracket = markdown.indexOf("]", openBracket);
+            
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             
-                String link = markdown.substring(openParen + 1, closeParen);
-                link = link.replaceAll("\\s", "");
-                toReturn.add(link);
+            String link = markdown.substring(openParen + 1, closeParen);
+            link = link.replaceAll("\\s", "");
+            toReturn.add(link);
             currentIndex = closeParen + 1;
         }
 
