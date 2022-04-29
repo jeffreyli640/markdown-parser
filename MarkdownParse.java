@@ -26,6 +26,11 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             
+            System.out.println(openBracket + " " + closeBracket + " " + openParen + " " + closeParen);
+
+            if(openParen == -1 || closeParen == -1) {
+                break;
+            }
             String link = markdown.substring(openParen + 1, closeParen);
             link = link.replaceAll("\\s", "");
             toReturn.add(link);

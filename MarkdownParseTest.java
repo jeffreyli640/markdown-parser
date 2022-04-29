@@ -29,7 +29,7 @@ public class MarkdownParseTest {
 
     @Test
     public void testGetLinks2() throws IOException {
-        assertEquals("[https://something.com, some-thing.html]", 
+        assertEquals("[]", 
         MarkdownParse.getLinks(Files.readString(Path.of("test-file2.md"))).toString());
     }
 
