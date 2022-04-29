@@ -27,11 +27,11 @@ public class MarkdownParseTest {
         MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))).toString());
     }
 
-    /*@Test
+    @Test
     public void testGetLinks2() throws IOException {
-        assertEquals("[]", 
+        assertEquals("[https://something.com, some-thing.html]", 
         MarkdownParse.getLinks(Files.readString(Path.of("test-file2.md"))).toString());
-    }*/
+    }
 
     @Test
     public void testGetLinks3() throws IOException {
