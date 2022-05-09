@@ -28,6 +28,8 @@ public class MarkdownParse {
             
             System.out.println(openBracket + " " + closeBracket + " " + openParen + " " + closeParen);
 
+
+
             if(openParen == -1 || closeParen == -1) {
                 break;
             }
