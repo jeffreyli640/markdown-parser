@@ -23,10 +23,8 @@ public class MarkdownParse {
             
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            
-            System.out.println(openBracket + " " + closeBracket + " " + openParen + " " + closeParen);
 
-            if(openParen == -1 || closeParen == -1) {
+            if(closeBracket == 1 || openBracket == 1 || openParen == -1 || closeParen == -1) {
                 break;
             }
             String link = markdown.substring(openParen + 1, closeParen);
@@ -46,5 +44,4 @@ public class MarkdownParse {
 	    System.out.println(links.toString());
         System.out.println("All links found");
     }
->>>>>>> c32ce9a600dafeaedd6dd104a584bdfb1a7ea5ba
 }
