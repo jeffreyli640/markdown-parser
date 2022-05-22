@@ -44,4 +44,19 @@ public class MarkdownParseTest {
         assertEquals("[something.html]", 
         MarkdownParse.getLinks(Files.readString(Path.of("test-file4.md"))).toString());
     }
+
+    @Test
+    public void testSnippet1() {
+
+    }
+
+    @Test
+    public void testSnippet2() {
+        
+    }
+
+    @Test
+    public void testSnippet3() {
+        
+    }
 }
