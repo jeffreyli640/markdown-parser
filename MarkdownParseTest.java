@@ -52,17 +52,18 @@ public class MarkdownParseTest {
         MarkdownParse.getLinks(Files.readString(Path.of("snippet-1.md"))).toString());
     }
 
-    /*
+    
     @Test
     public void testSnippet2() throws IOException {
-        assertEquals("[something.html]", 
-        MarkdownParse.getLinks(Files.readString(Path.of("snippet-1.md"))).toString());
+        assertEquals("[b.com, a.com(()), example.com]", 
+        MarkdownParse.getLinks(Files.readString(Path.of("snippet-2.md"))).toString());
     }
-
+    
+    
     @Test
     public void testSnippet3() throws IOException {
-        assertEquals("[something.html]", 
+        assertEquals("[https://www.twitter.com, https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule, github.com, https://cse.ucsd.edu/]", 
         MarkdownParse.getLinks(Files.readString(Path.of("snippet-3.md"))).toString());
     }
-    */
+    
 }
