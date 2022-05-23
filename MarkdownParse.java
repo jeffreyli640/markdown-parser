@@ -7,32 +7,42 @@ public class MarkdownParse {
 
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
-        // find the next [, then find the ], then find the (, then read link upto next )
+        // find the next [, then find the ], then find the (, then take up to
+        // the next )
         int currentIndex = 0;
+        
         while(currentIndex < markdown.length()) {
+           
             int openBracket = markdown.indexOf("[", currentIndex);
-            if(openBracket > 0){
+            
+            //System.out.println(currentIndex + " "  + toReturn.toString());
+            
+            int closeBracket = markdown.indexOf("]", openBracket);
+            int openParen = markdown.indexOf("(", closeBracket);
+            int closeParen = markdown.indexOf(")", openParen);
+            
+            if(openBracket == -1 || closeBracket == -1
+                  || closeParen == -1 || openParen == -1) {
+                return toReturn;
+            }
+            if(openBracket > 0) {
                 if(markdown.charAt(openBracket - 1) == '!') {
                     openBracket = markdown.indexOf("[",openBracket + 1);
                     if(openBracket == -1) {
-                        break;
+                        return toReturn;
                     }
                 }
             }
-            int closeBracket = markdown.indexOf("]", openBracket);
             
-            int openParen = markdown.indexOf("(", closeBracket);
-            int closeParen = markdown.indexOf(")", openParen);
-
-            if(closeBracket == 1 || openBracket == 1 || openParen == -1 || closeParen == -1) {
-                break;
-            }
-            String link = markdown.substring(openParen + 1, closeParen);
-            link = link.replaceAll("\\s", "");
-            toReturn.add(link);
-            currentIndex = closeParen + 1;
+            String potentialLink = markdown.substring(openParen + 1, closeParen);
+            //if(potentialLink.indexOf(" ") == -1 && potentialLink.indexOf("\n") == -1) {
+                toReturn.add(potentialLink.replaceAll("\\s", ""));
+                currentIndex = closeParen + 1;
+            //}
+            //else {
+                //currentIndex = currentIndex + 1;
+            //}
         }
-
         return toReturn;
     }
 
