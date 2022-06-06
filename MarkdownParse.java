@@ -35,13 +35,13 @@ public class MarkdownParse {
             }
             
             String potentialLink = markdown.substring(openParen + 1, closeParen);
-            //if(potentialLink.indexOf(" ") == -1 && potentialLink.indexOf("\n") == -1) {
+            if(potentialLink.indexOf(" ") == -1 && potentialLink.indexOf("\n") == -1) {
                 toReturn.add(potentialLink.replaceAll("\\s", ""));
                 currentIndex = closeParen + 1;
-            //}
-            //else {
-                //currentIndex = currentIndex + 1;
-            //}
+            }
+            else {
+                currentIndex = currentIndex + 1;
+            }
         }
         return toReturn;
     }
